@@ -1,0 +1,51 @@
+{% load static %}
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Search YouTube</title>
+         <!-- Bootstrap core CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+         <style>
+           .bd-placeholder-img {
+             font-size: 1.125rem;
+             text-anchor: middle;
+             -webkit-user-select: none;
+             -moz-user-select: none;
+             -ms-user-select: none;
+             user-select: none;
+           }
+     
+           @media (min-width: 768px) {
+             .bd-placeholder-img-lg {
+               font-size: 3.5rem;
+             }
+           }
+         </style>
+         <!-- Custom styles for this template -->
+        <link href="{% static 'api/style.css' %}" rel="stylesheet">
+    </head>
+  <body>
+      <!-- TextForm and Bottons on Header -->
+     <main role="main">
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">YouTube Mini Search</h1>
+            <form method="POST" id="systemForm"  action="">
+              <div class="input-group mb-3">
+                  {% csrf_token %}
+                  <input type="text" class="form-control mx-2" required="" name="searched" value="{{ instance.name }}" id="uss">
+              </div>
+              <p>
+                <button type="submit" name="user_field" value="user_search" class="btn btn-primary my-2" form="systemForm" >Video Search</button>
+                <a href="/video" class="btn btn-primary my-2">Show all Videos Data</a> 
+              </p>
+            </form>
+        </div>
+      </section>
+    <div class="container">
+          {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>
